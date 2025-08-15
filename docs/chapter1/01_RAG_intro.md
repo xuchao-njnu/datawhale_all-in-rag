@@ -80,6 +80,8 @@ RAG（Retrieval-Augmented Generation）是一种**融合信息检索与文本生
   2. **检索（Retrieval）** 🔍️：基于查询语义，从向量数据库召回最相关的文档片段（Context）。
   3. **生成（Generation）** ✨：将检索结果作为上下文输入LLM，生成自然语言响应。
 
+##以上为许超添加的rag示意图解释
+
 ### 1.3 技术演进分类
 
 RAG技术按照复杂度可划分为[^4]：
