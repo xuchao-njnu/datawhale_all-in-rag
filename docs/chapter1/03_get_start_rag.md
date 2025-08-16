@@ -218,17 +218,22 @@ from llama_index.core import VectorStoreIndex, SimpleDirectoryReader, Settings
 from llama_index.llms.deepseek import DeepSeek
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 
+#加载当前目录下的 .env 文件，将其中的环境变量（如 API 密钥）加入系统环境变量。
 load_dotenv()
 
+#将 LlamaIndex 的全局 LLM 设置为 DeepSeek，指定模型为 "deepseek-chat"，API 密钥从环境变量获取。
 Settings.llm = DeepSeek(model="deepseek-chat", api_key=os.getenv("DEEPSEEK_API_KEY"))
+#将 LlamaIndex 的全局嵌入模型设置为 HuggingFaceEmbedding，指定模型为 "BAAI/bge-small-zh-v1.5"。
 Settings.embed_model = HuggingFaceEmbedding("BAAI/bge-small-zh-v1.5")
-
+#从指定的 Markdown 文件加载文档数据。
 documents = SimpleDirectoryReader(input_files=["../../data/C1/markdown/easy-rl-chapter1.md"]).load_data()
-
+#用 SimpleDirectoryReader 加载指定路径下的 markdown 文档，得到可用于索引的文档对象列表。
 index = VectorStoreIndex.from_documents(documents)
-
+#通过加载的文档对象创建向量索引（会自动调用嵌入模型，将文档转为向量存储）。
 query_engine = index.as_query_engine()
-
+#打印当前查询引擎使用的提示词模板（即 LLM 生成回答时的提示内容）。
+#具体请参考我们的文档：https://docs.llamaindex.ai/en/stable/examples/llm/deepseek/
+#或者我的z.ai的对话
 print(query_engine.get_prompts())
 
 print(query_engine.query("文中举了哪些例子?"))
