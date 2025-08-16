@@ -24,10 +24,10 @@ services:
       - neo4j_data:/data
       - neo4j_logs:/logs
       - neo4j_plugins:/plugins
-      # 将data文件夹映射到容器的import目录
-      - ./data:/import
+      # 将cypher文件夹映射到容器的import目录（CSV文件在这里）
+      - ./cypher:/import
       # 映射脚本目录
-      - ./data:/scripts
+      - ./cypher:/scripts
     restart: unless-stopped
     # 添加健康检查
     healthcheck:
@@ -44,7 +44,7 @@ services:
       neo4j:
         condition: service_healthy
     volumes:
-      - ./data:/scripts
+      - ./cypher:/scripts
     command: >
       sh -c "
         echo 'Waiting for Neo4j to be ready...' &&
