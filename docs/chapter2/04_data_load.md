@@ -132,3 +132,4 @@ for i, element in enumerate(elements, 1):
 ## 练习
 
 - 使用`partition_pdf`替换当前`partition`函数并分别尝试用`hi_res`和`ocr_only`进行解析，观察输出结果有何变化。
+- 许超：练习已经完成，见code/C2/01_xc_unstructed_example.py，相关注释也已经添加。
