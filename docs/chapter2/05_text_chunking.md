@@ -212,6 +212,11 @@ LangChain 提供了 `langchain_experimental.text_splitter.SemanticChunker` 来�
 **具体示例如下**
 
 ```python
+# HuggingFaceEmbeddings 类在 LangChain 0.2.2 版本中已被弃用，并将在 1.0 版本中完全移除。
+#具体来说，这个类的功能已经被迁移到了一个独立的 langchain-huggingface 包中，这是 LangChain 团队为了拆分功能、减小核心包体积而做的调整。
+#应该替换为：
+#pip install -U langchain-huggingface
+#from langchain_huggingface import HuggingFaceEmbeddings
 import os
 ## os.environ["HF_ENDPOINT"] = "https://hf-mirror.com"
 from langchain_experimental.text_splitter import SemanticChunker
@@ -234,6 +239,7 @@ loader = TextLoader("../../data/C2/txt/蜂医.txt")
 documents = loader.load()
 
 docs = text_splitter.split_documents(documents)
+#许超：运行结果，这篇文章只分出来两个块，对格式化有层级的md文档效果不好
 ```
 
 ### 3.4 基于文档结构的分块
