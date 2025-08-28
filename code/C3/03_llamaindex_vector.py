@@ -12,8 +12,9 @@ texts = [
 ]
 docs = [Document(text=t) for t in texts]
 
-# 3. 创建索引并持久化到本地
+# 3. 创建索引并持久化到本地，默认情况下，LlamaIndex 使用一个简单的内存向量存储，非常适合快速实验。
 index = VectorStoreIndex.from_documents(docs)
 persist_path = "./llamaindex_index_store"
 index.storage_context.persist(persist_dir=persist_path)
 print(f"LlamaIndex 索引已保存至: {persist_path}")
+
