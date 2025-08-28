@@ -164,16 +164,16 @@ FAISS index has been saved to ./faiss_index_store
 ## 练习
 
 1. LlamaIndex默认会将数据存储为透明可读的JSON格式，运行[03_llamaindex_vector.py](https://github.com/datawhalechina/all-in-rag/blob/main/code/C3/03_llamaindex_vector.py)文件，查看保存的json文件内容。
-   -这 5 个 JSON 文件是 LlamaIndex 持久化索引时自动生成的，分别用于存储不同类型的数据和元信息。具体说明如下：
-   -default__vector_store.json
-   存储默认的向量索引数据，包括文档的嵌入向量及其相关元数据。用于支持向量检索。
-   -docstore.json
-   存储原始文档内容及其唯一标识（如 doc_id），用于在检索到相关向量后，快速定位和返回原始文档。
-   -graph_store.json
-   存储索引结构的图信息（如节点、边等），用于支持复杂的索引结构（如知识图谱、树状索引等）。
-   -image__vector_store.json
-   存储图片相关的向量数据（如果有图片嵌入），本例中可能为空或为默认生成。
-   -index_store.json
-   存储索引的元信息，包括索引类型、配置参数、各部分之间的关联等。用于索引的加载和管理。
-   -用途总结：这些文件共同保证索引的持久化和可恢复性，使你可以在不同会话或机器上加载和使用已构建的索引，无需重新计算嵌入或索引结构。
+   - 这 5 个 JSON 文件是 LlamaIndex 持久化索引时自动生成的，分别用于存储不同类型的数据和元信息。具体说明如下：
+   - default__vector_store.json
+       * 存储默认的向量索引数据，包括文档的嵌入向量及其相关元数据。用于支持向量检索。
+   - docstore.json
+       * 存储原始文档内容及其唯一标识（如 doc_id），用于在检索到相关向量后，快速定位和返回原始文档。
+   - graph_store.json
+       * 存储索引结构的图信息（如节点、边等），用于支持复杂的索引结构（如知识图谱、树状索引等）。
+   - image__vector_store.json
+       * 存储图片相关的向量数据（如果有图片嵌入），本例中可能为空或为默认生成。
+   - index_store.json
+   * 存储索引的元信息，包括索引类型、配置参数、各部分之间的关联等。用于索引的加载和管理。
+   - 用途总结：这些文件共同保证索引的持久化和可恢复性，使你可以在不同会话或机器上加载和使用已构建的索引，无需重新计算嵌入或索引结构。
 2. 新建一个代码文件实现对LlamaIndex存储数据的加载和相似性搜索。
