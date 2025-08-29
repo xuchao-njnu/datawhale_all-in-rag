@@ -132,6 +132,25 @@ print(f"回答: {base_response}\n")
 *   任何自定义的分类标签
 
 ![结构化索引](./images/3_5_1.webp)
+### 这张图展示了结合元数据过滤和自动检索的过程，用于回答特定查询。以下是各部分的解释：
+
+**查询输入：**
+- 用户输入查询：“Tell me about the childhood of a US sports celebrity”（告诉我一位美国体育名人的童年）。
+- 元数据过滤：
+    * 系统根据查询生成元数据过滤器，包括“country: US”和“category: Sports”，用于筛选相关数据。
+- 自动检索（使用LLMs）：
+    * 利用大型语言模型（LLMs）和向量数据库（Vector DB）进行自动检索。
+    * 系统从数据库中检索与过滤器匹配的节点。
+- 向量数据库（Vector DB）：
+      * 存储多个节点，每个节点包含类别（category）和所属国家（country）信息。
+      * 示例节点：
+          - Node 1：类别为“Sports”，国家为“US”。
+          - Node 2：类别为“Sports”，国家为“US”。
+          - Node 3：类别为“Music”，国家为“Barbados”。
+          - Node 4：类别为“Music”，国家为“Barbados”。
+- 检索结果：
+    * 根据元数据过滤器，从向量数据库中筛选出符合条件的节点。
+    * 在此例中，节点1和节点2符合条件（类别为“Sports”，国家为“US”）。
 
 实际上，在第二章“文本分块”中介绍的**基于文档结构的分块**方法，就是实现结构化索引的一种前置步骤。例如，在使用 `MarkdownHeaderTextSplitter` 时，分块器会自动将Markdown文档的各级标题（如 `Header 1`, `Header 2` 等）提取并存入每个文本块的元数据中。这些标题信息就是非常有价值的结构化数据，可以直接用于后续的元数据过滤。
 
